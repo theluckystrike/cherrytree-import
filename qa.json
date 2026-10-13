@@ -1,0 +1,87 @@
+[
+	{
+		"feature": "preview",
+		"caption": "Preview seven nodes and four PNG images before the import.",
+		"note": "Start here.md",
+		"eval": "(async () => { document.body.removeClass('theme-dark'); document.body.addClass('theme-light'); app.workspace.trigger('css-change'); const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.signOut(); p.openImport(xml, 'cherry-small-fixture.ctd'); const transfer = new DataTransfer(); transfer.items.add(new File([xml], 'cherry-small-fixture.ctd', { type: 'application/xml' })); document.querySelector('.cherrytree-import-modal input[type=file]').files = transfer.files; if (document.querySelectorAll('.cherrytree-import-tree li').length !== 7) throw new Error('Wrong preview count'); return 'ok'; })()",
+		"wait": 800,
+		"zoom": 0.9
+	},
+	{
+		"feature": "hierarchy",
+		"caption": "The child note bbb has the table header first.",
+		"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.signOut(); if (!app.vault.getAbstractFileByPath('CherryTree demo')) await p.importXml(xml, 'cherry-small-fixture.ctd', { folder: 'CherryTree demo' }); await app.workspace.getLeaf(false).setViewState({ type: 'markdown', state: { file: \"CherryTree demo/aaa/bbb.md\", mode: \"preview\" } }); const fe = app.workspace.getLeavesOfType('file-explorer')[0]; const child = app.vault.getFileByPath('CherryTree demo/aaa/bbb.md'); if (fe && child) { app.workspace.leftSplit.expand(); await app.workspace.revealLeaf(fe); fe.view.revealInFolder(child); } return 'ok'; })()",
+		"wait": 1100
+	},
+	{
+		"feature": "formatting",
+		"caption": "The note has headings, inline styles, and a shell code block.",
+		"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.signOut(); if (!app.vault.getAbstractFileByPath('CherryTree demo')) await p.importXml(xml, 'cherry-small-fixture.ctd', { folder: 'CherryTree demo' }); await app.workspace.getLeaf(false).setViewState({ type: 'markdown', state: { file: \"CherryTree demo/aaa/Formatting.md\", mode: \"preview\" } }); return 'ok'; })()",
+		"wait": 1100
+	},
+	{
+		"feature": "links",
+		"caption": "The note has an imported node link and a web link.",
+		"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.signOut(); if (!app.vault.getAbstractFileByPath('CherryTree demo')) await p.importXml(xml, 'cherry-small-fixture.ctd', { folder: 'CherryTree demo' }); await app.workspace.getLeaf(false).setViewState({ type: 'markdown', state: { file: \"CherryTree demo/Project links.md\", mode: \"preview\" } }); return 'ok'; })()",
+		"wait": 1100
+	},
+	{
+		"feature": "images",
+		"caption": "Four PNG images are at the source positions.",
+		"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.signOut(); if (!app.vault.getAbstractFileByPath('CherryTree demo')) await p.importXml(xml, 'cherry-small-fixture.ctd', { folder: 'CherryTree demo' }); await app.workspace.getLeaf(false).setViewState({ type: 'markdown', state: { file: \"CherryTree demo/Project links/Images.md\", mode: \"preview\" } }); return 'ok'; })()",
+		"wait": 1100
+	},
+	{
+		"feature": "properties",
+		"caption": "Pro adds tags and a creation date.",
+		"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.opts.http = async () => ({ status: 200, json: { data: { viewer: { login: 'demo-reader' }, user: { sponsorshipForViewerAsSponsor: { isActive: true, isOneTimePayment: false, tier: { name: '$5 a month', monthlyPriceInCents: 500 } } } } } }); app.secretStorage.setSecret('cherrytree-import-github-token', 'gho_' + '0'.repeat(36)); await p.pro.refreshNow(); if (!app.vault.getAbstractFileByPath('CherryTree Pro demo')) await p.importXml(xml, 'cherry-small-fixture.ctd', { folder: 'CherryTree Pro demo', properties: true, indexes: true }); await app.workspace.getLeaf(false).setViewState({ type: 'markdown', state: { file: \"CherryTree Pro demo/aaa.md\", mode: \"preview\" } }); return 'ok'; })()",
+		"wait": 1100
+	},
+	{
+		"feature": "index",
+		"caption": "Pro adds an index with links to child notes.",
+		"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.opts.http = async () => ({ status: 200, json: { data: { viewer: { login: 'demo-reader' }, user: { sponsorshipForViewerAsSponsor: { isActive: true, isOneTimePayment: false, tier: { name: '$5 a month', monthlyPriceInCents: 500 } } } } } }); app.secretStorage.setSecret('cherrytree-import-github-token', 'gho_' + '0'.repeat(36)); await p.pro.refreshNow(); if (!app.vault.getAbstractFileByPath('CherryTree Pro demo')) await p.importXml(xml, 'cherry-small-fixture.ctd', { folder: 'CherryTree Pro demo', properties: true, indexes: true }); await app.workspace.getLeaf(false).setViewState({ type: 'markdown', state: { file: \"CherryTree Pro demo/aaa/_index.md\", mode: \"preview\" } }); return 'ok'; })()",
+		"wait": 1100
+	},
+	{
+		"feature": "subtree",
+		"caption": "Pro selects the Project links branch with four nodes.",
+		"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.opts.http = async () => ({ status: 200, json: { data: { viewer: { login: 'demo-reader' }, user: { sponsorshipForViewerAsSponsor: { isActive: true, isOneTimePayment: false, tier: { name: '$5 a month', monthlyPriceInCents: 500 } } } } } }); app.secretStorage.setSecret('cherrytree-import-github-token', 'gho_' + '0'.repeat(36)); await p.pro.refreshNow(); p.openImport(xml, 'cherry-small-fixture.ctd'); const transfer = new DataTransfer(); transfer.items.add(new File([xml], 'cherry-small-fixture.ctd', { type: 'application/xml' })); document.querySelector('.cherrytree-import-modal input[type=file]').files = transfer.files; const select = document.querySelector('.cherrytree-import-modal select'); select.value = '4'; select.dispatchEvent(new Event('change', { bubbles: true })); if (document.querySelectorAll('.cherrytree-import-tree li').length !== 4) throw new Error('Wrong subtree count'); return 'ok'; })()",
+		"wait": 800,
+		"after": "app.plugins.plugins['cherrytree-import'].modal?.close(); app.plugins.plugins['cherrytree-import'].pro.signOut(); 'ok'"
+	},
+	{
+		"feature": "settings",
+		"caption": "The Pro section has the price and GitHub account state.",
+		"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.opts.http = async () => ({ status: 200, json: { data: { viewer: { login: 'demo-reader' }, user: { sponsorshipForViewerAsSponsor: { isActive: true, isOneTimePayment: false, tier: { name: '$5 a month', monthlyPriceInCents: 500 } } } } } }); app.secretStorage.setSecret('cherrytree-import-github-token', 'gho_' + '0'.repeat(36)); await p.pro.refreshNow(); app.setting.open(); app.setting.openTabById('cherrytree-import'); return 'ok'; })()",
+		"wait": 800,
+		"after": "app.setting.close(); app.plugins.plugins['cherrytree-import'].pro.signOut(); 'ok'"
+	},
+	{
+		"feature": "cherrytree-import",
+		"caption": "Preview the source and open its converted table, rich text and images.",
+		"frames": [
+			{
+				"eval": "(async () => { document.body.removeClass('theme-dark'); document.body.addClass('theme-light'); app.workspace.trigger('css-change'); const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.signOut(); p.openImport(xml, 'cherry-small-fixture.ctd'); const transfer = new DataTransfer(); transfer.items.add(new File([xml], 'cherry-small-fixture.ctd', { type: 'application/xml' })); document.querySelector('.cherrytree-import-modal input[type=file]').files = transfer.files; if (document.querySelectorAll('.cherrytree-import-tree li').length !== 7) throw new Error('Wrong preview count'); return 'ok'; })()",
+				"wait": 800,
+				"hold": 1800,
+				"zoom": 0.9
+			},
+			{
+				"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.signOut(); if (!app.vault.getAbstractFileByPath('CherryTree demo')) await p.importXml(xml, 'cherry-small-fixture.ctd', { folder: 'CherryTree demo' }); await app.workspace.getLeaf(false).setViewState({ type: 'markdown', state: { file: \"CherryTree demo/aaa/bbb.md\", mode: \"preview\" } }); const fe = app.workspace.getLeavesOfType('file-explorer')[0]; const child = app.vault.getFileByPath('CherryTree demo/aaa/bbb.md'); if (fe && child) { app.workspace.leftSplit.expand(); await app.workspace.revealLeaf(fe); fe.view.revealInFolder(child); } return 'ok'; })()",
+				"wait": 800,
+				"hold": 1600
+			},
+			{
+				"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.signOut(); if (!app.vault.getAbstractFileByPath('CherryTree demo')) await p.importXml(xml, 'cherry-small-fixture.ctd', { folder: 'CherryTree demo' }); await app.workspace.getLeaf(false).setViewState({ type: 'markdown', state: { file: \"CherryTree demo/aaa/Formatting.md\", mode: \"preview\" } }); return 'ok'; })()",
+				"wait": 800,
+				"hold": 1600
+			},
+			{
+				"eval": "(async () => { const p = app.plugins.plugins['cherrytree-import']; p.modal?.close(); app.setting.close(); app.workspace.leftSplit.collapse(); const xml = await app.vault.read(app.vault.getFileByPath('CherryTree Import/cherry-small-fixture.ctd')); p.pro.signOut(); if (!app.vault.getAbstractFileByPath('CherryTree demo')) await p.importXml(xml, 'cherry-small-fixture.ctd', { folder: 'CherryTree demo' }); await app.workspace.getLeaf(false).setViewState({ type: 'markdown', state: { file: \"CherryTree demo/Project links/Images.md\", mode: \"preview\" } }); return 'ok'; })()",
+				"wait": 1000,
+				"hold": 1800
+			}
+		]
+	}
+]

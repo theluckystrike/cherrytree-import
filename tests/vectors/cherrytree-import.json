@@ -1,0 +1,609 @@
+{
+ "slug": "cherrytree-import",
+ "module": "products/cherrytree-import/src/convert.ts",
+ "function": "planImport",
+ "cases": [
+  {
+   "name": "Seven nodes and child bbb in aaa folder",
+   "args": [
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<cherrytree>\n  <node name=\"aaa\" unique_id=\"1\" prog_lang=\"custom-colors\" tags=\"research migration\" ts_creation=\"1683703170\">\n    <rich_text>Project archive. See </rich_text>\n    <rich_text link=\"node 2\">the comparison table</rich_text>\n    <node name=\"bbb\" unique_id=\"2\" prog_lang=\"custom-colors\" tags=\"planning\" ts_creation=\"1683703174\">\n      <table char_offset=\"0\">\n        <row>\n          <cell>CherryTree</cell>\n          <cell>XML</cell>\n          <cell>Local</cell>\n        </row>\n        <row>\n          <cell>Obsidian</cell>\n          <cell>Markdown</cell>\n          <cell>Vault</cell>\n        </row>\n        <row>\n          <cell>Images</cell>\n          <cell>PNG</cell>\n          <cell>Attachments</cell>\n        </row>\n        <row>\n          <cell>Tool</cell>\n          <cell>Format</cell>\n          <cell>Location</cell>\n        </row>\n      </table>\n      <rich_text>\n\nA table for the migration plan.</rich_text>\n    </node>\n    <node name=\"Formatting\" unique_id=\"3\" prog_lang=\"custom-colors\">\n      <rich_text scale=\"h2\">Field notes</rich_text>\n      <rich_text>\n\n</rich_text>\n      <rich_text weight=\"heavy\">bold</rich_text>\n      <rich_text> and </rich_text>\n      <rich_text style=\"italic\">italic</rich_text>\n      <rich_text>\n\n</rich_text>\n      <rich_text underline=\"single\">underlined</rich_text>\n      <rich_text> and </rich_text>\n      <rich_text strikethrough=\"true\">removed</rich_text>\n      <rich_text>\n\nRun the export before the import.\n</rich_text>\n      <codebox char_offset=\"88\" syntax_highlighting=\"sh\">echo \"Export complete\"\nls archive.ctd</codebox>\n    </node>\n  </node>\n  <node name=\"Project links\" unique_id=\"4\" prog_lang=\"custom-colors\">\n    <rich_text link=\"node 2\">Review the table</rich_text>\n    <rich_text>\n\n</rich_text>\n    <rich_text link=\"webs https://github.com/laurent22/joplin\">Joplin project</rich_text>\n    <node name=\"Images\" unique_id=\"5\" prog_lang=\"custom-colors\" tags=\"images\" ts_creation=\"1718742403\">\n      <rich_text>First image:\n\nSecond image:\n\nThird image:\n\nFourth image:\n</rich_text>\n      <encoded_png char_offset=\"13\">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</encoded_png>\n      <encoded_png char_offset=\"29\">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</encoded_png>\n      <encoded_png char_offset=\"44\">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</encoded_png>\n      <encoded_png char_offset=\"60\">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</encoded_png>\n    </node>\n    <node name=\"Next steps\" unique_id=\"6\" prog_lang=\"custom-colors\">\n      <rich_text>Check the imported notes before you move the archive.</rich_text>\n      <node name=\"Review\" unique_id=\"7\" prog_lang=\"custom-colors\">\n        <rich_text>Open a child note and check its links.</rich_text>\n      </node>\n    </node>\n  </node>\n</cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "nodeCount": 7,
+    "noteCount": 7,
+    "imageCount": 4
+   }
+  },
+  {
+   "name": "Ten nodes keep Cyrillic names and resolve a shared node",
+   "args": [
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<cherrytree>\n  <bookmarks list=\"1,2\"/>\n  <node unique_id=\"1\" master_id=\"0\" name=\"йцукенгшщз\" prog_lang=\"plain-text\" tags=\"йцукенгшщз\" readonly=\"0\" nosearch_me=\"0\" nosearch_ch=\"0\" custom_icon_id=\"0\" is_bold=\"0\" foreground=\"\" ts_creation=\"1564836930\" ts_lastsave=\"0\">\n    <rich_text>ciao plain\nйцукенгшщз</rich_text>\n  </node>\n  <node unique_id=\"2\" master_id=\"0\" name=\"b\" prog_lang=\"custom-colors\" tags=\"\" readonly=\"0\" nosearch_me=\"0\" nosearch_ch=\"0\" custom_icon_id=\"0\" is_bold=\"0\" foreground=\"\" ts_creation=\"1564932982\" ts_lastsave=\"1617718637\">\n    <rich_text justification=\"fill\">ciao rich</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text foreground=\"#ffff00000000\">fore</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text background=\"#e6e6e6e6fafa\">back</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text justification=\"center\" weight=\"heavy\">bold</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text style=\"italic\">italic</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text justification=\"right\" underline=\"single\">under</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text strikethrough=\"true\">strike</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text scale=\"h1\">h1</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text scale=\"h2\">h2</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text scale=\"h3\">h3</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text scale=\"h4\">h4</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text scale=\"h5\">h5</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text scale=\"h6\">h6</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text scale=\"small\">small</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text indent=\"1\">a</rich_text>\n    <rich_text indent=\"1\" scale=\"sup\">super</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text indent=\"2\">a</rich_text>\n    <rich_text indent=\"2\" scale=\"sub\">sub</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text family=\"monospace\">mono</rich_text>\n    <rich_text>\n</rich_text>\n    <node unique_id=\"3\" master_id=\"0\" name=\"c\" prog_lang=\"c\" tags=\"\" readonly=\"0\" nosearch_me=\"0\" nosearch_ch=\"0\" custom_icon_id=\"0\" is_bold=\"0\" foreground=\"\" ts_creation=\"1564988027\" ts_lastsave=\"0\">\n      <rich_text>int main(int argc, char *argv[])\n{\n    return 0;\n}\n</rich_text>\n    </node>\n    <node unique_id=\"6\" master_id=\"0\" name=\"sh\" prog_lang=\"sh\" tags=\"\" readonly=\"0\" nosearch_me=\"1\" nosearch_ch=\"1\" custom_icon_id=\"0\" is_bold=\"0\" foreground=\"\" ts_creation=\"1593795066\" ts_lastsave=\"0\">\n      <rich_text>echo \"ciao!\"</rich_text>\n      <node unique_id=\"8\" master_id=\"0\" name=\"html\" prog_lang=\"html\" tags=\"\" readonly=\"0\" nosearch_me=\"1\" nosearch_ch=\"0\" custom_icon_id=\"0\" is_bold=\"0\" foreground=\"\" ts_creation=\"1593795273\" ts_lastsave=\"0\">\n        <rich_text>&lt;head&gt;\n&lt;title&gt;NO&lt;/title&gt;\n&lt;/head&gt;</rich_text>\n      </node>\n      <node unique_id=\"9\" master_id=\"0\" name=\"xml\" prog_lang=\"xml\" tags=\"\" readonly=\"0\" nosearch_me=\"0\" nosearch_ch=\"1\" custom_icon_id=\"0\" is_bold=\"0\" foreground=\"\" ts_creation=\"1593795405\" ts_lastsave=\"0\">\n        <rich_text>&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;</rich_text>\n      </node>\n    </node>\n    <node unique_id=\"7\" master_id=\"0\" name=\"py\" prog_lang=\"python3\" tags=\"\" readonly=\"0\" nosearch_me=\"0\" nosearch_ch=\"0\" custom_icon_id=\"0\" is_bold=\"0\" foreground=\"\" ts_creation=\"1593795143\" ts_lastsave=\"0\">\n      <rich_text>print(\"ciao!\")</rich_text>\n    </node>\n  </node>\n  <node unique_id=\"4\" master_id=\"0\" name=\"d\" prog_lang=\"custom-colors\" tags=\"ciao\" readonly=\"1\" nosearch_me=\"0\" nosearch_ch=\"0\" custom_icon_id=\"45\" is_bold=\"1\" foreground=\"#ff0000\" ts_creation=\"1565002032\" ts_lastsave=\"0\">\n    <rich_text>second rich\n</rich_text>\n  </node>\n  <node unique_id=\"10\" master_id=\"5\"/>\n  <node unique_id=\"5\" master_id=\"0\" name=\"e\" prog_lang=\"custom-colors\" tags=\"\" readonly=\"0\" nosearch_me=\"0\" nosearch_ch=\"0\" custom_icon_id=\"0\" is_bold=\"0\" foreground=\"\" ts_creation=\"1565008774\" ts_lastsave=\"1708466019\">\n    <rich_text>anchored widgets:\n\ncodebox:\n</rich_text>\n    <rich_text justification=\"left\"></rich_text>\n    <rich_text>\n\nanchor:\n</rich_text>\n    <rich_text justification=\"left\"></rich_text>\n    <rich_text>\n\ntable:\n</rich_text>\n    <rich_text justification=\"left\"></rich_text>\n    <rich_text> </rich_text>\n    <rich_text justification=\"left\"></rich_text>\n    <rich_text>\n\nimage:\n</rich_text>\n    <rich_text justification=\"left\"></rich_text>\n    <rich_text>\n\nembedded file:\n</rich_text>\n    <rich_text justification=\"left\"></rich_text>\n    <rich_text>\n\nlatex equation:\n</rich_text>\n    <rich_text justification=\"left\"></rich_text>\n    <rich_text>\n\n</rich_text>\n    <rich_text link=\"webs http://www.ansa.it\">link to web ansa.it</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text link=\"node 4\">link to node ‘d’</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text link=\"node 5 йцукенгшщз\">link to node ‘e’ + anchor</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text link=\"fold L2V0Yw==\">link to folder /etc</rich_text>\n    <rich_text>\n</rich_text>\n    <rich_text link=\"file L2V0Yy9mc3RhYg==\">link to file /etc/fstab</rich_text>\n    <rich_text>\n</rich_text>\n    <codebox char_offset=\"28\" justification=\"left\" frame_width=\"297\" frame_height=\"50\" width_in_pixels=\"1\" syntax_highlighting=\"python\" highlight_brackets=\"1\" show_line_numbers=\"0\">def test_function:\n    print \"hi there йцукенгшщз\"</codebox>\n    <encoded_png char_offset=\"39\" justification=\"left\" anchor=\"йцукенгшщз\"/>\n    <table char_offset=\"49\" justification=\"left\" col_min=\"60\" col_max=\"60\" col_widths=\"105,75\">\n      <row>\n        <cell>йцукенгшщз</cell>\n        <cell>2</cell>\n      </row>\n      <row>\n        <cell>3</cell>\n        <cell>4</cell>\n      </row>\n      <row>\n        <cell>h1</cell>\n        <cell>h2</cell>\n      </row>\n    </table>\n    <table char_offset=\"51\" justification=\"left\" col_min=\"60\" col_max=\"60\" col_widths=\"105,75\" is_light=\"1\">\n      <row>\n        <cell>йцукенгшщз</cell>\n        <cell>2</cell>\n      </row>\n      <row>\n        <cell>3</cell>\n        <cell>4</cell>\n      </row>\n      <row>\n        <cell>h1</cell>\n        <cell>h2</cell>\n      </row>\n    </table>\n    <encoded_png char_offset=\"61\" justification=\"left\" link=\"webs http://www.ansa.it\">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</encoded_png>\n    <encoded_png char_offset=\"79\" justification=\"left\" filename=\"йцукенгшщз.txt\" time=\"1565442560\">0LnRhtGD0LrQtdC90LPRiNGJ0LcK</encoded_png>\n    <encoded_png char_offset=\"98\" justification=\"left\" filename=\"__ct_special.tex\">\\documentclass{article}\n\\pagestyle{empty}\n\\begin{document}\n$a^2+b^2=c^2$\n\\end{document}</encoded_png>\n  </node>\n</cherrytree>\n",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "nodeCount": 10,
+    "noteCount": 10
+   }
+  },
+  {
+   "name": "Bold text",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text weight=\"heavy\">x</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n**x**\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Italic text",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text style=\"italic\">x</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n*x*\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Underline text",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text underline=\"single\">x</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n<u>x</u>\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Strikethrough text",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text strikethrough=\"true\">x</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n~~x~~\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Level two heading",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text scale=\"h2\">Title</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n## Title\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Node link resolves the target path",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\"><rich_text link=\"node 2\">see</rich_text></node><node unique_id=\"2\" name=\"Target\"><rich_text>x</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n[[Import/Target|see]]\n"
+     },
+     {
+      "path": "Import/Target.md",
+      "content": "# Target\n\nx\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Web link",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text link=\"webs https://github.com/laurent22/joplin\">text</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n[text](https://github.com/laurent22/joplin)\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "File link uses decoded local path",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text link=\"file L2V0Yy9mc3RhYg==\">text</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n[text](file:///etc/fstab)\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Shell code box",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><codebox syntax_highlighting=\"sh\" char_offset=\"0\">echo hello\nls</codebox></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n```sh\necho hello\nls\n```\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Last table row becomes header",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><table char_offset=\"0\"><row><cell>1</cell><cell>2</cell><cell>3</cell></row><row><cell>4</cell><cell>5</cell><cell>6</cell></row><row><cell>7</cell><cell>8</cell><cell>9</cell></row><row><cell>A</cell><cell>B</cell><cell>C</cell></row></table></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n| A | B | C |\n| --- | --- | --- |\n| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 |\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "PNG stays between source characters",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text>ab</rich_text><encoded_png char_offset=\"1\">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</encoded_png></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\na![[Import/attachments/node-1-1.png]]b\n"
+     }
+    ],
+    "imageCount": 1
+   }
+  },
+  {
+   "name": "SQLite is refused",
+   "args": [
+    "SQLite format 3",
+    "input.ctb",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "error": "Export to .ctd (XML, no password) first"
+   }
+  },
+  {
+   "name": "Free ignores Pro properties",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" tags=\"tag\" ts_creation=\"1683703170\"><rich_text>x</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import",
+     "properties": true
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\nx\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Pro preserves tags and creation time",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" tags=\"tag other\" ts_creation=\"1683703170\"><rich_text>x</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import",
+     "properties": true
+    },
+    true
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "---\ntags:\n  - tag\n  - other\ncreated: 2023-05-10T07:19:30.000Z\n---\n\n# Note\n\nx\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Free ignores index notes",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Parent\"><rich_text>p</rich_text><node unique_id=\"2\" name=\"Child\"><rich_text>c</rich_text></node></node><node unique_id=\"3\" name=\"Other\"><rich_text>o</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import",
+     "indexes": true
+    },
+    false
+   ],
+   "expected": {
+    "nodeCount": 3,
+    "noteCount": 3
+   }
+  },
+  {
+   "name": "Pro adds one parent index",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Parent\"><rich_text>p</rich_text><node unique_id=\"2\" name=\"Child\"><rich_text>c</rich_text></node></node><node unique_id=\"3\" name=\"Other\"><rich_text>o</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import",
+     "indexes": true
+    },
+    true
+   ],
+   "expected": {
+    "nodeCount": 3,
+    "noteCount": 4
+   }
+  },
+  {
+   "name": "Free ignores subtree selection",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Parent\"><rich_text>p</rich_text><node unique_id=\"2\" name=\"Child\"><rich_text>c</rich_text></node></node><node unique_id=\"3\" name=\"Other\"><rich_text>o</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import",
+     "subtree": "2"
+    },
+    false
+   ],
+   "expected": {
+    "nodeCount": 3,
+    "noteCount": 3
+   }
+  },
+  {
+   "name": "Pro selects child subtree",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Parent\"><rich_text>p</rich_text><node unique_id=\"2\" name=\"Child\"><rich_text>c</rich_text></node></node><node unique_id=\"3\" name=\"Other\"><rich_text>o</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import",
+     "subtree": "2"
+    },
+    true
+   ],
+   "expected": {
+    "nodeCount": 1,
+    "notes": [
+     {
+      "path": "Import/Parent/Child.md",
+      "content": "# Child\n\nc\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Invalid subtree is refused",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Parent\"><rich_text>p</rich_text><node unique_id=\"2\" name=\"Child\"><rich_text>c</rich_text></node></node><node unique_id=\"3\" name=\"Other\"><rich_text>o</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import",
+     "subtree": "404"
+    },
+    true
+   ],
+   "expected": {
+    "error": "The selected node is not in the document."
+   }
+  },
+  {
+   "name": "Entities decode to literal text",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text>&lt;script&gt;&amp;</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n\\<script\\>&\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Duplicate names use distinct safe paths",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Same\"/><node unique_id=\"2\" name=\"same\"/></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Same.md",
+      "content": "# Same\n\n\n"
+     },
+     {
+      "path": "Import/same-2.md",
+      "content": "# same\n\n\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Unicode offsets count codepoints",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text>😀ab</rich_text><encoded_png char_offset=\"1\">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</encoded_png></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n😀![[Import/attachments/node-1-1.png]]ab\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Multiple object offsets include one placeholder each",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text>ab</rich_text><encoded_png char_offset=\"1\">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</encoded_png><encoded_png char_offset=\"2\">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</encoded_png></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "imageCount": 2,
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\na![[Import/attachments/node-1-1.png]]![[Import/attachments/node-1-2.png]]b\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Traversal destination is refused",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text>x</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "../escape"
+    },
+    false
+   ],
+   "expected": {
+    "error": "Use a folder path with safe names and no hidden folders or parent steps."
+   }
+  },
+  {
+   "name": "DTD is refused",
+   "args": [
+    "<!DOCTYPE cherrytree><cherrytree/>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "error": "XML document types and entities are not supported."
+   }
+  },
+  {
+   "name": "Missing node ids are refused",
+   "args": [
+    "<cherrytree><node name=\"Missing\"/></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "error": "Node ids must be present and unique."
+   }
+  },
+  {
+   "name": "Invalid PNG gives a visible warning",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><encoded_png char_offset=\"0\">invalid</encoded_png></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "imageCount": 0,
+    "warnings": [
+     "An object in Note is not a PNG. It was not saved."
+    ]
+   }
+  },
+  {
+   "name": "Missing node link keeps its text",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text link=\"node 404\">keep</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\nkeep\n"
+     }
+    ],
+    "warnings": [
+     "Node link target 404 is outside this import or missing. Its text is kept."
+    ]
+   }
+  },
+  {
+   "name": "Backticks in code use a longer fence",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><codebox char_offset=\"0\" syntax_highlighting=\"md\">```\ntext</codebox></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n````md\n```\ntext\n````\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "LaTeX source is kept as code",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><encoded_png char_offset=\"0\" filename=\"__ct_special.tex\">x^2</encoded_png></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n```latex\nx^2\n```\n"
+     }
+    ]
+   }
+  },
+  {
+   "name": "File paths keep Unicode",
+   "args": [
+    "<cherrytree><node unique_id=\"1\" name=\"Note\" ><rich_text link=\"file L3RtcC/QtNCw0L3QvdGL0LUudHh0\">file</rich_text></node></cherrytree>",
+    "case.ctd",
+    {
+     "folder": "Import"
+    },
+    false
+   ],
+   "expected": {
+    "notes": [
+     {
+      "path": "Import/Note.md",
+      "content": "# Note\n\n[file](file:///tmp/%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5.txt)\n"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+.cherrytree-import-modal {
+	width: min(760px, 95vw);
+	}
+
+.cherrytree-import-preview {
+	max-height: 290px;
+	overflow: auto;
+	padding: var(--size-4-2);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	}
+
+.cherrytree-import-tree {
+	list-style: none;
+	padding: 0;
+	font-family: var(--font-monospace);
+	}
+
+.cherrytree-import-tree li {
+	padding: var(--size-2-1) 0;
+	}
+
+.cherrytree-import-summary {
+	color: var(--text-accent);
+	font-weight: var(--font-semibold);
+	}
+
+.cherrytree-import-warning, .cherrytree-import-error {
+	color: var(--text-warning);
+	}
+
+.cherrytree-import-error {
+	padding: var(--size-4-1) 0;
+	}
+
+.cherrytree-import-complete {
+	color: var(--text-success);
+	}
+
+.cherrytree-import-modal .is-importing {
+	pointer-events: none;
+	opacity: 0.7;
+	}
+
