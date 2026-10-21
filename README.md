@@ -93,3 +93,7 @@ After a successful check, Pro can work offline for up to 14 days. Sign out or a 
 ## Support
 
 For help, contact theluckystrike through the product's GitHub page or notemods.com. Give the plugin version, app version, warning text, and a small example that you can share. Remove private note content from that example. This project uses the MIT license. The test folder records the public CherryTree sample sources and the changes made for the local fixture.
+
+## Community
+
+Questions, bugs or plugin ideas? Talk to me and other Obsidian users in [Zovo Chat](https://t.me/+k2MM-BIc7SQ5OWM0) on Telegram. It has a topic for these plugins. You can also open an issue here.
