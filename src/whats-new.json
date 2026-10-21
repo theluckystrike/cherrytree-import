@@ -1,0 +1,33 @@
+{
+	"id": "cherrytree-import",
+	"name": "CherryTree Import",
+	"version": "1.1.0",
+	"changes": [
+		"New Send feedback command. It opens a page where you can report a problem or suggest an idea.",
+		"Skips CherryTree anchors without a false PNG warning.",
+		"Gives distinct paths to names with no-break spaces."
+	],
+	"changes_user": [
+		"New Send feedback command. It opens a page where you can report a problem or suggest an idea.",
+		"Turning off the plugin during an import now stops new writes and keeps the notes and images already made."
+	],
+	"tip": "Export a CherryTree .ctb document as XML first, because the importer needs a .ctd file.",
+	"thanks": "Hi, I am Michael, a solo developer in Poland. CherryTree Import is one of over 100 small plugins that I make. Thank you for moving your notes into Obsidian with it.",
+	"related": [
+		{
+			"id": "zim-notebook-import",
+			"name": "Zim Notebook Import",
+			"blurb": "Convert basic Zim pages into linked Markdown notes."
+		},
+		{
+			"id": "standard-notes-import",
+			"name": "Standard Notes Import",
+			"blurb": "Import supported text, tags, UUIDs and dates from a decrypted JSON backup."
+		},
+		{
+			"id": "notestation-nsx-import",
+			"name": "Note Station NSX Import",
+			"blurb": "Import Note Station backups as notes with notebooks, dates, tags, and local attachments."
+		}
+	]
+}

@@ -68,9 +68,13 @@ The destination must not exist. This rule prevents an import from merging into y
 
 ## Settings
 
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
+
 The Destination folder setting supplies the next dialog's default path. The dialog has separate controls for properties, parent indexes, and subtree selection. These controls are disabled while Pro is off. Sign in, refresh the sponsorship status, or sign out in the plugin's Pro section. A saved import option does not bypass the sponsorship check.
 
 ## FAQ
+
+Disabling the plugin stops new import writes. A folder, image or note write already in progress can finish. Completed output stays in the destination. The stopped import reports its completed notes, PNG images and folders. Check that output, then retry with a new folder name.
 
 Why does a `.ctb` file fail? It is a SQLite document. Export to `.ctd` with no password first. Encrypted files are outside the supported input format.
 

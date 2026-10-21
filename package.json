@@ -1,6 +1,6 @@
 {
 	"name": "cherrytree-import",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"private": true,
 	"description": "Convert CherryTree XML documents into nested Markdown notes with links and images.",
 	"main": "main.js",
