@@ -45,8 +45,9 @@ describe('CherryTree import in the real app', function () {
 		await browser.waitUntil(async () => (await lastNotice()) === 'Export to .ctd (XML, no password) first', { timeout: 5000 });
 		await browser.$('.cherrytree-import-modal input[type="file"]').setValue(resolve('tests/fixtures/cherry-small-fixture.ctd'));
 		await browser.waitUntil(async () => (await browser.$('.cherrytree-import-summary').getText()).includes('7 nodes · 7 notes · 4 PNG images'), { timeout: 10000 });
-		const disabled = await browser.execute(() => ({ toggles: [...document.querySelectorAll('.cherrytree-import-modal .checkbox-container')].map((x) => x.classList.contains('is-disabled')), subtree: (document.querySelector('.cherrytree-import-modal select') as HTMLSelectElement).disabled }));
-		expect(disabled).toEqual({ toggles: [true, true], subtree: true });
+		// Free user: the Pro options stay off but can be selected, so a select can show the Pro notice (pro-notice.e2e.ts).
+		const controls = await browser.execute(() => ({ toggles: [...document.querySelectorAll('.cherrytree-import-modal .checkbox-container')].map((x) => ({ disabled: x.classList.contains('is-disabled'), on: x.classList.contains('is-enabled') })), subtree: (document.querySelector('.cherrytree-import-modal select') as HTMLSelectElement).disabled }));
+		expect(controls).toEqual({ toggles: [{ disabled: false, on: false }, { disabled: false, on: false }], subtree: false });
 	});
 	it('imports through the dialog and saves nested notes, links, tables and PNG bytes', async () => {
 		await browser.$('.cherrytree-import-modal input[type="text"]').setValue('E2E free');

@@ -1,5 +1,11 @@
 # cherrytree-import
 
+## 1.1.2
+
+### Patch Changes
+
+- 55bde84: The Pro options of the import dialog now show how to get Pro, with a Sponsor on GitHub button, when you select them. The option stays off until Pro is on.
+
 ## 1.1.1
 
 ### Patch Changes

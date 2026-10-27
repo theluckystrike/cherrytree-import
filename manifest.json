@@ -1,7 +1,7 @@
 {
 	"id": "cherrytree-import",
 	"name": "CherryTree Import",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"minAppVersion": "1.13.4",
 	"description": "Convert CherryTree XML documents into nested Markdown notes with links and images.",
 	"author": "Michael Lip",

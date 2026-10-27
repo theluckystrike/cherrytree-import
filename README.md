@@ -70,7 +70,7 @@ The destination must not exist. This rule prevents an import from merging into y
 
 After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
 
-The Destination folder setting supplies the next dialog's default path. The dialog has separate controls for properties, parent indexes, and subtree selection. These controls are disabled while Pro is off. Sign in, refresh the sponsorship status, or sign out in the plugin's Pro section. A saved import option does not bypass the sponsorship check.
+The Destination folder setting supplies the next dialog's default path. The dialog has separate controls for properties, parent indexes, and subtree selection. If Pro is off and you select one of these controls, a notice tells you how to get Pro, with a Sponsor on GitHub button. The option stays off. Sign in, refresh the sponsorship status, or sign out in the plugin's Pro section. A saved import option does not bypass the sponsorship check.
 
 ## FAQ
 

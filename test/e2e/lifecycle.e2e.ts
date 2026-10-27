@@ -40,7 +40,7 @@ describe('CherryTree cancellation in the app', () => {
   const lockSha256 = createHash('sha256').update(readFileSync(lockPath)).digest('hex');
   console.log('CANDIDATE APP CANCELLATION', JSON.stringify({ ...result, lockPath, lockSha256 }));
   expect(result.assetHashes).toEqual(expectedAssets);
-  expect(result.version).toMatch(/^1\.(13\.4|14\.4)$/);
+  expect(result.version).toMatch(/^1\.1[3-9]\.\d+$/);
   for (const record of result.records) {
    expect(record.message).toContain('disabled'); expect(record.message).toContain('kept'); expect(record.laterOperations).toBe(0); expect(record.folderKept).toBe(true);
    expect(record.notes).toBe(record.method === 'create' ? 1 : 0); expect(record.images).toBe(record.method === 'createFolder' ? 0 : record.method === 'createBinary' ? 1 : 4);

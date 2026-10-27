@@ -1,6 +1,6 @@
 import { Modal, Notice, Setting } from 'obsidian';
 import { DEFAULT_OPTIONS, type ImportOptions, type ImportPlan } from './convert';
-import { isPro, onProChange } from './pro';
+import { PRO_LEADS, isPro, onProChange, proNotice } from './pro';
 import type CherrytreeImportPlugin from './main';
 import { DOCUMENT_LABEL, IMPORT_TITLE, PRO_LABELS } from './labels';
 
@@ -45,15 +45,25 @@ export class ImportModal extends Modal {
 			} catch (error) { if (generation === this.readGeneration) this.showError(error); }
 		})(); });
 		new Setting(el).setName('Destination folder').setDesc('Use a new folder. The import does not merge into an existing folder.').addText((t) => t.setValue(this.options.folder).onChange((value) => { this.options.folder = value; this.renderPreview(); }));
-		new Setting(el).setName(PRO_LABELS.properties).addToggle((t) => t.setValue(this.options.properties && isPro()).setDisabled(!isPro()).onChange((v) => { this.options.properties = v; this.renderPreview(); }));
-		new Setting(el).setName(PRO_LABELS.indexes).addToggle((t) => t.setValue(this.options.indexes && isPro()).setDisabled(!isPro()).onChange((v) => { this.options.indexes = v; this.renderPreview(); }));
+		// Free users can select the Pro options: a select shows what Pro adds and how to get it. The option stays off.
+		new Setting(el).setName(PRO_LABELS.properties).addToggle((t) => t.setValue(this.options.properties && isPro()).onChange((v) => {
+			if (!isPro()) { if (v) { proNotice(PRO_LEADS.properties); t.setValue(false); } return; }
+			this.options.properties = v; this.renderPreview();
+		}));
+		new Setting(el).setName(PRO_LABELS.indexes).addToggle((t) => t.setValue(this.options.indexes && isPro()).onChange((v) => {
+			if (!isPro()) { if (v) { proNotice(PRO_LEADS.indexes); t.setValue(false); } return; }
+			this.options.indexes = v; this.renderPreview();
+		}));
 		new Setting(el).setName(PRO_LABELS.subtree).addDropdown((d) => {
 			d.addOption('', 'Whole document');
 			if (this.xml) {
 				try { for (const n of this.plugin.preview(this.xml, this.filename, { ...this.options, subtree: '' }).tree) d.addOption(n.id, `${'— '.repeat(n.depth)}${n.name}`); }
 				catch { /* The preview shows the error below. */ }
 			}
-			d.setValue(isPro() ? this.options.subtree : '').setDisabled(!isPro()).onChange((v) => { this.options.subtree = v; this.renderPreview(); });
+			d.setValue(isPro() ? this.options.subtree : '').onChange((v) => {
+				if (!isPro()) { if (v) { proNotice(PRO_LEADS.subtree); d.setValue(''); } return; }
+				this.options.subtree = v; this.renderPreview();
+			});
 		});
 		this.errorEl = el.createDiv({ cls: 'cherrytree-import-error', attr: { role: 'alert' } });
 		this.previewEl = el.createDiv({ cls: 'cherrytree-import-preview' });

@@ -1,11 +1,9 @@
 {
 	"id": "cherrytree-import",
 	"name": "CherryTree Import",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"changes": [
-		"Skips CherryTree anchors without a false PNG warning.",
-		"Gives distinct paths to names with no-break spaces.",
-		"Keeps the drive letter in Windows file links."
+		"Tags and creation dates, Parent index notes and Selected subtree now show how to get Pro, with a Sponsor on GitHub button, when you select them. The option stays off until Pro is on."
 	],
 	"tip": "Export a CherryTree .ctb document as XML first, because the importer needs a .ctd file.",
 	"thanks": "Hi, I am Michael, a solo developer in Poland. CherryTree Import is one of over 100 small plugins that I make. Thank you for moving your notes into Obsidian with it.",
