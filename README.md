@@ -6,6 +6,27 @@ The input must be a `.ctd` file. A SQLite `.ctb` document needs an XML export fr
 
 <img src="https://raw.githubusercontent.com/theluckystrike/cherrytree-import/HEAD/docs/cherrytree-import.gif" alt="Preview a CherryTree document and open its imported notes." width="720">
 
+## Quick start
+
+1. To test the import, save this text as `test.ctd` with a text editor. It is a small CherryTree XML document with two nodes:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node name="Projects" unique_id="1" prog_lang="custom-colors">
+    <rich_text>See </rich_text>
+    <rich_text link="node 2">the plan</rich_text>
+    <node name="Plan" unique_id="2" prog_lang="custom-colors">
+      <rich_text>Step one.</rich_text>
+    </node>
+  </node>
+</cherrytree>
+```
+
+2. In Obsidian, run the command "Import CherryTree XML". Select `test.ctd`. The dialog shows the node tree.
+3. Keep the destination folder `CherryTree import`. Select "Import notes".
+4. Open `CherryTree import/Projects.md`. Its text "the plan" links to `Projects/Plan.md`.
+
 ## Features
 
 ### Preview the node tree
@@ -86,7 +107,7 @@ What was not tested? Physical Android and iOS devices, encrypted exports, very l
 
 The core features are free. Pro features need a GitHub Sponsors sponsorship of theluckystrike: $5 a month or more, or $15 once. A total payment of $15 meets the payment requirement for Pro without further payment. Sign-in and the checks below still apply. Your notes stay readable and editable with or without Pro.
 
-GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike. You need no account for the free features. Pro needs the GitHub account that sponsors.
+GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike?frequency=one-time&metadata_source=cherrytree-import. You need no account for the free features. Pro needs the GitHub account that sponsors.
 
 Until you select "Sign in with GitHub" in the settings, CherryTree Import makes no network requests. Sign in uses the GitHub device flow. CherryTree Import sends its public client ID and the scope `read:user` to `https://github.com/login/device/code` and shows you a code. While you enter the code at https://github.com/login/device, it asks `https://github.com/login/oauth/access_token` every few seconds to check the sign-in status. The scope permits profile reads only. GitHub needs this access to show the sponsorship tier. It grants no repository scope and no write access.
 
