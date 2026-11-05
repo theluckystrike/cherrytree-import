@@ -91,7 +91,7 @@ The destination must not exist. This rule prevents an import from merging into y
 
 After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
 
-The Destination folder setting supplies the next dialog's default path. The dialog has separate controls for properties, parent indexes, and subtree selection. If Pro is off and you select one of these controls, a notice tells you how to get Pro, with a Sponsor on GitHub button. The option stays off. Sign in, refresh the sponsorship status, or sign out in the plugin's Pro section. A saved import option does not bypass the sponsorship check.
+The Destination folder setting supplies the next dialog's default path. The dialog has separate controls for properties, parent indexes, and subtree selection. If Pro is off and you select one of these controls, a notice tells you how to get Pro, with a Sponsor on GitHub button. The option stays off. A saved import option does not bypass the sponsorship check.
 
 ## FAQ
 
@@ -106,6 +106,8 @@ What was not tested? Physical Android and iOS devices, encrypted exports, very l
 ## Payment, account and network
 
 The core features are free. Pro features need a GitHub Sponsors sponsorship of theluckystrike: $5 a month or more, or $15 once. A total payment of $15 meets the payment requirement for Pro without further payment. Sign-in and the checks below still apply. Your notes stay readable and editable with or without Pro.
+
+[One payment turns on Pro in every NoteMods plugin](https://notemods.com/pro/).
 
 GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike?frequency=one-time&metadata_source=cherrytree-import. You need no account for the free features. Pro needs the GitHub account that sponsors.
 
