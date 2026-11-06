@@ -11,7 +11,7 @@ const LEADS = {
 	subtree: 'Pro imports a selected subtree.',
 };
 const LABELS = { properties: 'Tags and creation dates (Pro)', indexes: 'Parent index notes (Pro)', subtree: 'Selected subtree (Pro)' };
-const PITCH = 'Sponsor on GitHub, then sign in from the plugin settings.';
+const PITCH = 'One payment turns on Pro in every NoteMods plugin. Sponsor on GitHub, then sign in from the plugin settings.';
 
 interface Options { folder: string; properties: boolean; indexes: boolean; subtree: string }
 interface ModalState { options: Options; summary: string; toggles: boolean[]; subtree: string }
